@@ -1,0 +1,68 @@
+﻿@model LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+
+
+<div class="row">
+    <div class="col-md-6">
+        <img src="~/img/Sneakers.jpg" width="300" height="400" />
+    </div>
+    <div class="col-md-6">
+        <form asp-action="Login" asp-controller="Account">
+            <div class="card" style="width: 25rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Dogo Business Management</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Akıllı İş yönetimi Yazılımı 1.1</h6>
+                    <p class="card-text">
+
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="col-md-1"><i class="fas fa-user mt-2"></i></div>
+                                <div class="col-md-11"> <input asp-for="UserName" type="text" class="form-control"> </div>
+                            </div>
+                            @*<label asp-for="UserName" class="form-label"></label>*@
+                            <span asp-validation-for="UserName" class="alert-warning"></span>
+               
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <div class="row">
+                                <div class="col-md-1"><i class="fas fa-lock mt-2"></i></div>
+                                <div class="col-md-11"> <input asp-for="Password" class="form-control"> </div>
+                            </div>
+                            <span asp-validation-for="Password" class="alert-warning"></span>
+
+
+
+                        </div>
+
+
+                        <div class="mb-3 form-check">
+                            
+                            <center><input type="checkbox" class="form-check-input" asp-for="RememberMe"> <label asp-for="RememberMe" class="form-label"></label></center>  
+                        </div>
+                    
+                        <center> <button type="submit" class="btn btn-primary"><i class="fas fa-check" style="margin-right:4px"></i>Giriş Yap</button></center>
+                        <div class="mb-3">
+
+                            @Html.ValidationMessage("CustomError")
+
+
+                        </div>
+
+                    </p>
+
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+
+

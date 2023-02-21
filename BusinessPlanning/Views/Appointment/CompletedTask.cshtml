@@ -1,0 +1,86 @@
+﻿@model TaskViewModel
+@{
+    ViewData["Title"] = "CompletedTask";
+}
+
+<link href="~/lib/fullcalendar/bootstrap/main.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+@section Scripts{
+
+  
+   
+
+
+
+    <script>
+        $(document).ready(function () {
+             $('#example').DataTable();
+        });
+    </script>
+    }
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+            
+                    @*<input id="userhideId" hidden value="@Model.ActiveUser.Id" />*@
+                    <h6 class="card-subtitle mb-2 text-muted">Tamamlanmış Görevler</h6>
+                    @*<input id="userIdentityName" hidden value="@Model.ActiveUser.UserName" />*@
+                    <hr />
+                    <div class="row">
+                        <table id="example" class="display" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Başlık</th>
+                                    <th>İçerik</th>
+                                    <th>Başlangıç Tarih</th>
+                                    <th>Bitiş Tarih</th>
+                                    <th>Tamamlanma Tarih</th>
+                                 
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model.CompletedTasks)
+                                {
+                                    <tr>
+                                        <td>@item.TitleName</td>
+                                        <td>@item.Decription</td>
+                                        <td>@item.StartDate</td>
+                                        <td>@item.EndDate</td>
+                                        <td>@item.UpdatedDate</td>
+                                     
+                                    </tr>
+                                }
+
+
+
+
+
+
+
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Başlık</th>
+                                    <th>İçerik</th>
+                                    <th>Başlangıç Tarih</th>
+                                    <th>Bitiş Tarih</th>
+                                    <th>Tamamlanma Tarih</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+
+
+                    </div>
+                </div>
+            </div>
+            <br />
+
+
+        </div>
+
+    </div>
+
+
+    

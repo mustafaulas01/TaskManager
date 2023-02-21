@@ -1,0 +1,390 @@
+﻿@model UserProfileModelView
+@{
+    ViewData["Title"] = "UserProfile";
+}
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous">
+
+</script>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Görev İstatistikleri</h5>
+                <h6 class="card-subtitle mb-2 text-muted">@Model.FirstName @Model.LastName </h6>
+                <input id="userIdentityName" hidden value="@Model.UserName" />
+                <hr />
+                <div class="row">
+                    <div class="col-md-10"><label class="form-label" style="color:burlywood">Aktif Görev   </label> </div>
+                    <div class="col-md-2"><label class="form-label" style="color:burlywood"><b>@Model.AwaitingTask</b> </label></div>
+                </div>
+                <div class="row">
+                 
+                    <div class="col-md-10"><label class="form-label" style="color:forestgreen"><a href="/Appointment/CompletedTask?UserId=@Model.UserId">Tamamlanan Görev</a>  </label> </div>
+                    <div class="col-md-2"><label class="form-label" style="color:forestgreen"><b>@Model.CompletedTask</b> </label></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-10"><label class="form-label" style="color:darkred">Silinen Görev  </label> </div>
+                    <div class="col-md-2"><label class="form-label" style="color:darkred"><b>@Model.DeletedTask</b> </label></div>
+                </div>
+                @*<a href="#" class="card-link">Card link</a>*@
+
+            </div>
+        </div>
+        <br />
+
+
+
+    </div>
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Kullanıcı Bilgileri</h5>
+                <div>
+
+                    <div class="mb-3">
+                        <div class="row">
+
+
+                            <div class="col-md-8"> <label class="form-label"><b>Ad</b></label><input id="inputFirstName" asp-for="FirstName" type="text" class="form-control"> </div>
+
+                            <span asp-validation-for="FirstName" class="alert-warning"></span>
+                        </div>
+
+
+
+                    </div>
+                    <div class="mb-3">
+                        <div class="row">
+
+
+                            <div class="col-md-8"> <label class="form-label"><b>Soyad</b></label> <input id="inputLastName" asp-for="LastName" type="text" class="form-control"> </div>
+
+                            <span asp-validation-for="LastName" class="alert-warning"></span>
+                        </div>
+
+
+
+
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="row">
+
+
+                            <div class="col-md-8"> <label class="form-label"><b>Kullanıcı Adı</b></label> <input asp-for="UserName" id="inputUserName" type="text" class="form-control"> </div>
+
+                            <span asp-validation-for="UserName" class="alert-warning"></span>
+                        </div>
+
+
+
+
+                    </div>
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <button class="btn btn-warning" id="btnDegistir" style="color:white">Şifre Değişikliği</button>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="row" id="PasswordArea" style="display:none">
+                                    <div class="col-md-3">
+                                        <input class="form-control" placeholder="Eski Şifre" id="oldPassword" />
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input class="form-control" type="password" placeholder="Yeni Şifre" id="newPassword" />
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input class="form-control" type="password" placeholder="Şifre Tekrar" id="rePassword" />
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button class="btn btn-success" id="btnGuncelle">Güncelle</button>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            <b>Renk Kartı</b>
+                        </label>
+                        <div class="row">
+
+
+                            <div class="col-md-4">
+                                <img src="~/img/RenkPalet/turncu.png" width="50" height="50" />
+                                <input id="radio_1" type="radio" asp-for="Color" value="#F44336" />
+                            </div>
+                            <div class="col-md-4">
+                                <img src="~/img/RenkPalet/kirmizi.png" width="50" height="50" />
+                                <input id="radio_2" type="radio" asp-for="Color" value="#E91E63" />
+                            </div>
+                            <div class="col-md-4">
+                                <img src="~/img/RenkPalet/mor.png" width="50" height="50" />
+                                <input id="radio_3" type="radio" asp-for="Color" value="#9C27B0" />
+                            </div>
+                            <div class="col-md-4">
+                                <img src="~/img/RenkPalet/gokmavi.png" width="50" height="50" />
+                                <input id="radio_4" type="radio" asp-for="Color" value="#03A9F4" />
+                            </div>
+                            <div class="col-md-4">
+                                <img src="~/img/RenkPalet/aqua.png" width="50" height="50" />
+                                <input id="radio_5" type="radio" asp-for="Color" value="#00BCD4" />
+                            </div>
+
+
+
+                            <div class="col-md-4">
+                                <img src="~/img/RenkPalet/acikyesil.png" width="50" height="50" />
+                                <input id="radio_6" type="radio" asp-for="Color" value="#8BC34A" />
+                            </div>
+
+                            <div class="col-md-4">
+                                <img src="~/img/RenkPalet/yosunyesil.png" width="50" height="50" />
+                                <input id="radio_7" type="radio" asp-for="Color" value="#009688" />
+                            </div>
+
+                            <div class="col-md-4">
+                                <img src="~/img/RenkPalet/sari.png" width="50" height="50" />
+                                <input id="radio_8" type="radio" asp-for="Color" value="#FFEB3B" />
+                            </div>
+
+                            <div class="col-md-4">
+                                <img src="~/img/RenkPalet/turuncu.png" width="50" height="50" />
+                                <input id="radio_9" type="radio" asp-for="Color" value="#FFC107" />
+                            </div>
+
+
+                            <span asp-validation-for="Color" class="alert-warning"></span>
+                        </div>
+
+
+
+
+                    </div>
+
+
+
+                </div>
+            </div>
+            <div class="card-footer">
+                <button id="btnUpdate" type="submit" class="btn btn-primary float-right">Bilgilerimi Güncelle</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        //$('#rePassword').focusout(function () {
+        //    var pass = $('#newPassword').val();
+        //    var pass2 = $('#rePassword').val();
+        //    if (pass != pass2) {
+        //        alert('Şifreler Uyuşmuyor!');
+        //    }
+
+        //});
+
+
+
+
+      
+        $('#btnDegistir').click(function () {
+
+
+            $('#PasswordArea').show();
+
+
+        });
+
+        var color;
+        function kontrolEt() {
+            if ($('#inputFirstName').val() === "") {
+                alertify.warning('Ad Alanı Boş geçilmemelidir!');
+
+                return;
+            }
+            if ($('#inputLastName').val() === "") {
+                alertify.warning('Soyad Alanı Boş geçilmemelidir!');
+                return;
+            }
+            if ($('#inputUserName').val() === "") {
+                alertify.warning('Kullanıcı Adı Boş geçilmemelidir!');
+                return;
+            }
+        }
+
+
+        $("#radio_1").change(function () {
+            if ($("#radio_1").is(":checked")) {
+
+                color = "#F44336";
+            }
+        });
+        $("#radio_2").change(function () {
+            if ($("#radio_2").is(":checked")) {
+
+                color = "#E91E63";
+            }
+        });
+        $("#radio_3").change(function () {
+            if ($("#radio_3").is(":checked")) {
+
+                color = "#9C27B0";
+            }
+        });
+        $("#radio_4").change(function () {
+            if ($("#radio_4").is(":checked")) {
+
+                color = "#03A9F4";
+            }
+        });
+        $("#radio_5").change(function () {
+            if ($("#radio_5").is(":checked")) {
+
+                color = "#00BCD4";
+            }
+        });
+        $("#radio_6").change(function () {
+            if ($("#radio_6").is(":checked")) {
+
+                color = "#8BC34A";
+            }
+        });
+        $("#radio_7").change(function () {
+            if ($("#radio_7").is(":checked")) {
+
+                color = "#009688";
+            }
+        });
+        $("#radio_8").change(function () {
+            if ($("#radio_8").is(":checked")) {
+
+                color = "#FFEB3B";
+            }
+        });
+        $("#radio_9").change(function () {
+            if ($("#radio_9").is(":checked")) {
+
+                color = "#FFC107";
+            }
+        });
+
+        function BilgileriGuncelle(datam) {
+            $.ajax({
+                type: 'POST',
+                url: '/account/UpdateUserProfile',
+                data: datam,
+                success: function (response) {
+                    if (response === "200") {
+
+                        alertify.success('Bilgileriniz Başarı ile Güncellendi')
+
+              
+                    }
+                    else if(response=="210") {
+                   
+                        alertify.success('Bilgileriniz Başarı ile Güncellendi')
+                        window.location.href="/Account/Login/";
+
+                    }
+                },
+                error: function () {
+                 
+                    alertify.error('İşlem Gerçekleşemedi');
+                }
+
+
+            });
+        }
+        $('#btnUpdate').click(function () {
+         
+
+            kontrolEt();
+
+            var data = {
+
+                FirstName: $('#inputFirstName').val(),
+                LastName: $('#inputLastName').val(),
+                UserName: $('#inputUserName').val(),
+                Color: color,
+                CompletedTask: 0,
+                AwaitingTask: 0,
+                DeletedTask:0
+                
+            }
+
+            console.log(data);
+            BilgileriGuncelle(data);
+
+
+
+        });
+
+        $('#btnGuncelle').click(function () {
+
+            if ($('#oldPassword').val() === "") {
+                alertify.warning('Şifre Alanları Boş Geçilmemelidir!');
+
+                return;
+            }
+            if ($('#newPassword').val() === "") {
+                alertify.warning('Şifre Alanları Boş Geçilmemelidir!');
+                return;
+            }
+
+            var passwordModel = {
+                OldPassword:$('#oldPassword').val(),
+                NewPassword: $('#newPassword').val(),
+                rePassword:$('#rePassword').val()
+            }
+            console.log(passwordModel);
+            $.ajax({
+                type: 'POST',
+                url: '/account/UpdatePassword',
+                data: passwordModel,
+                success: function (response) {
+                    if (response === "200") {
+
+                        alertify.success('Şifreniz Başarı ile Güncellendi')
+                        $('#PasswordArea').hide();
+
+                    }
+                    else if (response == "210") {
+
+                        alertify.error('Şifreler Uyuşmuyor')
+                     /*   window.location.href = "/Account/Login/";*/
+
+                    }
+                    else if (response == "220") {
+
+                        alertify.error('Yeni Şifre ile Şifre tekrarı uyuşmuyor')
+                        
+
+                    }
+                },
+                error: function () {
+
+                    alertify.error('İşlem Gerçekleşemedi');
+                }
+
+
+            });
+
+
+
+        });
+
+    });
+</script>

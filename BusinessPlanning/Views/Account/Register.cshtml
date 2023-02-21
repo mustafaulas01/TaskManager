@@ -1,0 +1,60 @@
+﻿@model RegisterViewModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h2 class="text-center"> İş Yönetimi Sistemine Kayıt Olunuz </h2>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <form asp-action="Register" asp-controller="Account">
+            <div class="mb-3">
+                <label asp-for="UserName" class="form-label"></label>
+                <span asp-validation-for="UserName" class="alert-warning"></span>
+                <input asp-for="UserName" type="text" class="form-control">
+
+            </div>
+            <div class="mb-3">
+                <label asp-for="FirstName" class="form-label"></label>
+                <span asp-validation-for="FirstName" class="alert-warning"></span>
+                <input asp-for="FirstName" type="text" class="form-control">
+
+            </div>
+            <div class="mb-3">
+                <label asp-for="LastName" class="form-label"></label>
+                <span asp-validation-for="LastName" class="alert-warning"></span>
+                <input asp-for="LastName" type="text" class="form-control">
+
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label"></label>
+                <span asp-validation-for="Email" class="alert-warning"></span>
+                <input asp-for="Email" class="form-control">
+
+            </div>
+            <div class="mb-3">
+                <label asp-for="Password" class="form-label"></label>
+                <span asp-validation-for="Password" class="alert-warning"></span>
+                <input asp-for="Password" class="form-control">
+
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Color" class="form-label"></label>
+                <span asp-validation-for="Color" class="alert-warning"></span>
+                <input asp-for="Color" type="text" class="form-control">
+
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" asp-for="IsManager">
+                <label asp-for="IsManager" class="form-label"></label>
+            </div>
+            <button type="submit" class="btn btn-primary">Kayıt Ol</button>
+        </form>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+
+
